@@ -5,9 +5,6 @@ export default {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        poppins: ['Poppins', 'sans-serif'],
-      },
       colors: {
         'custom-green': 'rgba(44, 131, 134, 0.897)', // Ajoute la couleur ici avec le nom que tu veux
       },

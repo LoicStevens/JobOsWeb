@@ -54,7 +54,7 @@ const LoginPage = () => {
             type="submit"
             className="w-full py-2 bg-custom-green text-white rounded-md hover:custom-green focus:outline-none"
           >
-            Login
+            Sign in
           </button>
         </form>
         <p className="text-center text-gray-600 mt-6">

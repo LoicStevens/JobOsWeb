@@ -5,6 +5,8 @@ import Register from './pages/Authentification/Register';
 import ResetPassword from './pages/Authentification/ResetPassword';
 import ForgotPassword from './pages/Authentification/ForgotPassword';
 import OtpVerification from './pages/Authentification/OtpVerification';
+import Home from './pages/Home';
+import HomePrestataire from './pages/HomePrestataire';
 
 const App = () => {
   return (
@@ -15,6 +17,8 @@ const App = () => {
         
         {/* Route pour la page d'inscription */}
         
+        <Route path="/home-client" element={<Home />} />
+        <Route path="/home-prestataire" element={<HomePrestataire />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/resetPassword" element={<ResetPassword />} />
