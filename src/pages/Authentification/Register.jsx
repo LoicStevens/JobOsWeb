@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const LoginPage = () => {
+const Register = () => {
   const [role, setRole] = useState('prestataire'); // rôle par défaut : "prestataire"
 
   return (
@@ -13,9 +13,7 @@ const LoginPage = () => {
         <h2 className="text-2xl font-semibold text-center text-gray-800 mb-4">
           Registration
         </h2>
-        <p className="text-center text-gray-600 mb-6">
-          Please Register here!!
-        </p>
+       
 
         {/* Sélecteur de rôle avec émojis */}
         <div className="flex justify-around mb-6">
@@ -49,12 +47,12 @@ const LoginPage = () => {
           </div>
           <div className="mb-4">
             <label className="block text-gray-700" htmlFor="email">
-              Email or Username
+              Email 
             </label>
             <input
               type="text"
               id="email"
-              placeholder="Enter your email or username"
+              placeholder="Enter your email "
               className="mt-1 block w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-custom-green"
             />
           </div>
@@ -94,4 +92,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default Register;
