@@ -9,6 +9,7 @@ import Home from './pages/Home';
 import HomePrestataire from './pages/HomePrestataire';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import Announcement from './pages/Announcement';
 
 const App = () => {
   return (
@@ -25,7 +26,9 @@ const App = () => {
         <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/resetPassword" element={<ResetPassword />} />
         <Route path="/otpVerification" element={<OtpVerification />} />
+        <Route path="/announcement" element={<Announcement />} />
         {/* Tu peux ajouter d'autres routes ici */}
+        
       </Routes>
     </Router>
   );

@@ -2,27 +2,12 @@
 
 import HeaderClient from '../components/HeaderClient';
 import Footer from '../components/Footer';
-import { FaLaptopCode, FaChartLine, FaMobileAlt } from 'react-icons/fa'; // Importation des icônes de react-icons
+
 import AffiliatePartners from '../components/AffiliatePartners';
+import Categories from '../components/Categories';
 const Home = () => {
    
-    const services = [
-        {
-            icon: <FaLaptopCode className="text-blue-500 text-5xl" />,
-            title: 'Développement Web',
-            description: 'Conception de sites web performants, modernes et réactifs.',
-        },
-        {
-            icon: <FaMobileAlt className="text-green-500 text-5xl" />,
-            title: 'Développement Mobile',
-            description: 'Création d’applications mobiles intuitives et performantes.',
-        },
-        {
-            icon: <FaChartLine className="text-red-500 text-5xl" />,
-            title: 'Marketing Digital',
-            description: 'Améliorez votre visibilité en ligne grâce à des stratégies efficaces.',
-        },
-    ];
+  
 
     return (
         <div className="min-h-screen flex flex-col bg-gray-100">
@@ -50,14 +35,14 @@ const Home = () => {
                                 placeholder="What skill are you looking for?"
                                 className="flex-grow px-4 py-2 text-black outline-none rounded-l-full"
                             />
-                            <button className="bg-black text-white px-6 py-2 rounded-full hover:bg-blue-600">
+                            <button className="bg-black text-white px-6 py-2 rounded-full hover:bg-bgcustom-green">
                                 Search
                             </button>
                         </div>
 
                         {/* CTA Button */}
                         <div>
-                            <button className="bg-black text-white py-2 px-6 rounded-full hover:bg-blue-700">
+                            <button className="bg-black text-white py-2 px-6 rounded-full ">
                                 Post a Job - It&apos;s Free
                             </button>
                         </div>
@@ -75,21 +60,8 @@ const Home = () => {
             </div>
 
          {/* Services Section */}
-        <div className="container mx-auto py-12">
-            <h2 className="text-4xl font-bold text-center mb-10"> Services Recommandés</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {services.map((service, index) => (
-                    <div key={index} className="bg-white shadow-lg rounded-lg p-6 text-center hover:shadow-xl transition-shadow duration-300">
-                        <div className="mb-4">
-                            {service.icon}
-                        </div>
-                        <h3 className="text-2xl font-semibold mb-2">{service.title}</h3>
-                        <p className="text-gray-600">{service.description}</p>
-                    </div>
-                ))}
-            </div>
-        </div>
-
+        
+            <Categories/>
         
             {/* Statistics Section */}
             <div className="bg-white py-8">

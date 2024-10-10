@@ -117,28 +117,7 @@ const Header = () => {
             </svg>
           </button>
         </div>
-        <div className="bg-gray-100 border border-transparent focus-within:border-blue-500 focus-within:bg-transparent flex px-6 rounded-full h-10 lg:w-2/4 mt-3 mx-auto items-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="fill-[#96989e] w-[15px]"
-            viewBox="0 0 210 210"
-            enableBackground="new 0 0 210 210"
-            xmlSpace="preserve"
-          >
-            <path
-              d="M186.408 177.523l-44.605-44.619c30.443-36.424 5.125-92.934-42.462-92.934-42.868 0-69.69 45.675-49.344 82.5-21.957 20.217-22.013 53.652-1.036 74.627 14.345 14.345 36.82 17.68 55.15 9.762 18.156 8.11 40.29 5.33 55.123-9.503 10.753-10.752 16.016-25.206 16.016-40.26a55.297 55.297 0 0 0-1.942-12.573zM36.38 117.904a46.5 46.5 0 1 1 81.263-32.84 46.48 46.48 0 0 1-16.85 35.941c-19.664 16.208-22.808 45.12-6.02 63.047-7.02 7.02-16.348 10.889-26.274 10.889-20.557-.002-36.487-17.63-32.119-37.37zm117.162 40.54c-12.668 12.669-34.412 12.668-47.081 0-12.669-12.669-12.669-34.412 0-47.081 12.667-12.666 34.412-12.667 47.081 0 12.668 12.668 12.668 34.412 0 47.081z"
-              data-original="#000000"
-            />
-          </svg>
-          <input
-            type="text"
-            placeholder="search an announcement"
-            className="pl-4 pr-10 w-full focus:outline-none text-black font-light bg-transparent"
-          />
-          <button className="bg-custom-green hover:bg-custom-green px-5 rounded-full ml-auto text-white text-sm">
-            Search
-          </button>
-        </div>
+       
       </header>
               {/* Popup */}
 {isPopupOpen && (

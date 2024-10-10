@@ -51,22 +51,22 @@ const HeaderClient = () => {
               </li>
               {/* Menu Items */}
               <li className="max-lg:border-b max-lg:py-3">
-                <a href="#" className="hover:text-custom-green text-[20px] text-custom-green block font-bold">
+                <a href="#" className="hover:text-custom-green text-[16px] text-custom-green block font-bold">
                   Home
                 </a>
               </li>
               <li className="group max-lg:border-b max-lg:py-3 relative">
-                <a href="#" className="hover:text-custom-green text-gray-600 font-bold text-[20px] lg:hover:fill-custom-green block">
+                <a href="#" className="hover:text-custom-green text-gray-600 font-bold text-[16px] lg:hover:fill-custom-green block">
                   Proposals
                 </a>
               </li>
               <li className="group max-lg:border-b max-lg:py-3 relative">
-                <a href="#" className="hover:text-custom-green text-gray-600 font-bold text-[20px] lg:hover:fill-custom-green block">
+                <a href="#" className="hover:text-custom-green text-gray-600 font-bold text-[16px] lg:hover:fill-custom-green block">
                   Messages
                 </a>
               </li>
               <li className="group max-lg:border-b max-lg:py-3 relative">
-                <a href="#" className="hover:text-custom-green text-gray-600 font-bold text-[20px] lg:hover:fill-custom-green block" onClick={togglePopup}>
+                <a href="#" className="hover:text-custom-green text-gray-600 font-bold text-[16px] lg:hover:fill-custom-green block" onClick={togglePopup}>
                   Contact 
                 </a>
               </li>
