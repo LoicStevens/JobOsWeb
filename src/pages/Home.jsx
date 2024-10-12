@@ -2,7 +2,8 @@
 import React from 'react';
 import HeaderClient from '../components/HeaderClient';
 import Footer from '../components/Footer';
-
+import {FaLaptopCode,FaChartLine,FaMobileAlt} from 'react-icons/fa';
+import AffiliatePartners from '../components/AffiliatePartners';
 const Home = () => {
    
     const services = [

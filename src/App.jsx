@@ -7,9 +7,12 @@ import ForgotPassword from './pages/Authentification/ForgotPassword';
 import OtpVerification from './pages/Authentification/OtpVerification';
 import Home from './pages/Home';
 import HomePrestataire from './pages/HomePrestataire';
-import '../node_modules/slick-carousel/slick/slick.css';
-import '../node_modules/slick-carousel/slick/slick-theme.css';
-
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import ProfileCompletion from './components/ProfileCompletion';
+import ProfileComplete from './pages/ProfileComplete';
+import ProfilePage from './pages/ProfilePage';
+import ChatInterface from './pages/ChatInterface';
 
 const App = () => {
   return (
@@ -17,6 +20,9 @@ const App = () => {
       <Routes>
         {/* Route pour la page de connexion */}
         <Route path="/login" element={<Login />} />
+        <Route path="/chat" element={<ChatInterface />} />
+        <Route path="/profil-completion" element={<ProfileComplete />} />
+        <Route path="/profile" element={<ProfilePage />} />
         
         {/* Route pour la page d'inscription */}
         
