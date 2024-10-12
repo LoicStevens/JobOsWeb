@@ -5,8 +5,7 @@ const jobs = [
   { title: 'Software Engineer', location: 'California, USA', type: 'Part-time', deadline: '31 Jan 2020', icon: '🖥️' },
   { title: 'Digital Marketer', location: 'California, USA', type: 'Part-time', deadline: '31 Jan 2020', icon: '📊' },
   { title: 'Wordpress Developer', location: 'California, USA', type: 'Part-time', deadline: '31 Jan 2020', icon: '🌐' },
-  { title: 'Visual Designer', location: 'California, USA', type: 'Part-time', deadline: '31 Jan 2020', icon: '🎨' },
-  { title: 'Software Engineer', location: 'California, USA', type: 'Part-time', deadline: '31 Jan 2020', icon: '🖥️' }
+  
 ];
 
 const JobList = () => {

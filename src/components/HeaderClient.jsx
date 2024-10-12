@@ -62,6 +62,11 @@ const HeaderClient = () => {
               </li>
               <li className="group max-lg:border-b max-lg:py-3 relative">
                 <a href="#" className="hover:text-custom-green text-gray-600 font-bold text-[16px] lg:hover:fill-custom-green block">
+                 Blog
+                </a>
+              </li>
+              <li className="group max-lg:border-b max-lg:py-3 relative">
+                <a href="#" className="hover:text-custom-green text-gray-600 font-bold text-[16px] lg:hover:fill-custom-green block">
                   Messages
                 </a>
               </li>
@@ -90,12 +95,25 @@ const HeaderClient = () => {
               {isDropdownOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-10">
                   <div className="px-4 py-2 text-sm text-gray-700">John Doe</div>
+                  
+                  <p
+                    href="#settings"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    London
+                  </p>
                   <hr className="border-t border-gray-200" />
+                  <a
+                    href="#"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Dashboard
+                  </a>
                   <a
                     href="#settings"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                   >
-                    Settings
+                    Support
                   </a>
                   <a
                     href="/login"

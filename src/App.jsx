@@ -9,7 +9,13 @@ import Home from './pages/Home';
 import HomePrestataire from './pages/HomePrestataire';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+
+import ProfileComplete from './pages/ProfileComplete';
+import ProfilePage from './pages/ProfilePage';
+import ChatInterface from './pages/ChatInterface';
 import Announcement from './pages/Announcement';
+import JobDetail from './pages/JobDetail';
+import Blog from './components/Blog';
 
 const App = () => {
   return (
@@ -17,6 +23,9 @@ const App = () => {
       <Routes>
         {/* Route pour la page de connexion */}
         <Route path="/login" element={<Login />} />
+        <Route path="/chat" element={<ChatInterface />} />
+        <Route path="/profil-completion" element={<ProfileComplete />} />
+        <Route path="/profile" element={<ProfilePage />} />
         
         {/* Route pour la page d'inscription */}
         
@@ -27,6 +36,8 @@ const App = () => {
         <Route path="/resetPassword" element={<ResetPassword />} />
         <Route path="/otpVerification" element={<OtpVerification />} />
         <Route path="/announcement" element={<Announcement />} />
+        <Route path='/detail' element={<JobDetail />} />
+        <Route path='/blog' element={<Blog />} />
         {/* Tu peux ajouter d'autres routes ici */}
         
       </Routes>

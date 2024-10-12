@@ -51,17 +51,22 @@ const Header = () => {
               </li>
               {/* Menu Items */}
               <li className="max-lg:border-b max-lg:py-3">
-                <a href="#" className="hover:text-custom-green text-[15px] text-custom-green block font-bold">
+                <a href="/home-prestataire" className="hover:text-custom-green text-[15px] text-custom-green block font-bold">
                   Home
                 </a>
               </li>
               <li className="group max-lg:border-b max-lg:py-3 relative">
-                <a href="#" className="hover:text-custom-green text-gray-600 font-bold text-[15px] lg:hover:fill-custom-green block">
+                <a href="/announcement" className="hover:text-custom-green text-gray-600 font-bold text-[15px] lg:hover:fill-custom-green block">
                   Announcements
                 </a>
               </li>
               <li className="group max-lg:border-b max-lg:py-3 relative">
                 <a href="#" className="hover:text-custom-green text-gray-600 font-bold text-[15px] lg:hover:fill-custom-green block">
+                  Blog
+                </a>
+              </li>
+              <li className="group max-lg:border-b max-lg:py-3 relative">
+                <a href="/chat" className="hover:text-custom-green text-gray-600 font-bold text-[15px] lg:hover:fill-custom-green block">
                   Messages
                 </a>
               </li>
@@ -90,12 +95,25 @@ const Header = () => {
               {isDropdownOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-10">
                   <div className="px-4 py-2 text-sm text-gray-700">John Doe</div>
+             
+                  <p
+                    href="#settings"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Dschang
+                  </p>
                   <hr className="border-t border-gray-200" />
+                  <a
+                    href="/profile"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
+                    Dashboard
+                  </a>
                   <a
                     href="#settings"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                   >
-                    Settings
+                    Support
                   </a>
                   <a
                     href="/login"
@@ -117,7 +135,7 @@ const Header = () => {
             </svg>
           </button>
         </div>
-       
+        
       </header>
               {/* Popup */}
 {isPopupOpen && (
