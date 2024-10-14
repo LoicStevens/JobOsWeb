@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
  // Ajustez le chemin
 
-import jsPDF from 'jspdf';
+
 import Header from '../components/Header';
+
 import 'jspdf-autotable'; // For better table formatting in PDFs
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faFileAlt, faFolderOpen, faCog } from '@fortawesome/free-solid-svg-icons';
@@ -94,75 +95,122 @@ const ProfilePage = () => {
 };
 
 // Profile Section
-const ProfileSection = () => (
-  <div className="p-6 bg-white shadow rounded-lg">
-    <h3 className="text-2xl font-semibold text-gray-800 mb-4">Profile Information</h3>
-    <p><strong>Name:</strong> Daniel S</p>
-    <p><strong>City:</strong> Muntinlupa, Ayala Alabang</p>
-    <p><strong>Skills:</strong> Client Advocacy, Communication, Team Leadership</p>
-  </div>
-);
+const ProfileSection = () => {
+  const sections = [
+    {
+      title: 'personalInfo',
+      displayTitle: 'Informations Personnelles',
+      description: "Renseignez vos informations personnelles. Ces détails nous aident à mieux vous connaître.",
+      fields: [
+        { label: 'Nom', value: 'Florian Sapin' },
+        { label: 'Ville', value: 'Paris, 75092' },
+        { label: 'Email', value: 'florian.sapin@gmail.com' },
+        { label: 'Téléphone', value: '06 23 94 16' },
+      ],
+    },
+    
+     
+    {
+      title: 'formation',
+      displayTitle: 'Formation',
+      fields: [
+        { label: 'Année', value: '2020' },
+        { label: 'Formation Obtenue', value: 'Master MEEF' },
+      ],
+    },
+    
+    {
+      title: 'professionalDetails',
+      displayTitle: 'Parcours Professionnels',
+      fields: [
+        { label: 'Professeur de mathématiques', value: 'École primaire Marie Curie | Chambéry' },
+      ],
+    },
+    {
+      title: 'interests',
+      displayTitle: 'Centres d\'Intérêt',
+      fields: [
+        { label: 'Centres d\'Intérêt', value: 'Littérature, Cinéma, Sports d\'équipe' },
+      ],
+    },
+    {
+      title: 'certificates',
+      displayTitle: 'Certificats',
+      fields: [
+        { label: 'Certificat de secourisme', value: 'Obtenu en 2020' },
+      ],
+    },
+    {
+      title: 'skillsExperience',
+      displayTitle: 'Compétences et Expérience',
+      description: 'Décrivez vos compétences, vos langues parlées, et une brève description de votre parcours.',
+      fields: [
+        { label: 'Compétences', value: 'Conception des leçons, Écoute active, Encadrement des travaux pratiques, Technologies de l’éducation' },
+        { label: 'Langues', value: 'Anglais - B2, Espagnol - B2' },
+        { label: 'Profil professionnel', value: 'Dévouement envers la promotion de l’apprentissage des élèves à travers des approches différenciées.' },
+      ],
+    },
+  ];
+
+  return (
+    <div className="grid grid-cols-4 gap-6">
+      {/* Section de gauche avec des informations personnelles */}
+      <div className="col-span-1 text-white p-6 rounded-lg bg-gray-800">
+        {sections[0].fields.map((field, index) => (
+          <div key={index} className="mb-4">
+            <strong className="block">{field.label}:</strong>
+            <span className="text-gray-300">{field.value}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Section de droite avec les autres détails */}
+      <div className="col-span-3 bg-gray-50 p-6 rounded-lg">
+        {sections.slice(1).map((section, index) => (
+          <div key={index} className="mb-6">
+            <h3 className="text-2xl font-semibold text-gray-800 mb-2">{section.displayTitle}</h3>
+            {section.fields.map((field, idx) => (
+              <p key={idx}>
+                <strong>{field.label}:</strong> {field.value}
+              </p>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+
+
+
+
 
 // CV/Resume Section with PDF Generation
 const CVResumeSection = () => {
-  const generatePDF = () => {
-    const doc = new jsPDF();
+  
+  
 
-    doc.setFontSize(20);
-    doc.text("Daniel S - CV/Resume", 14, 22);
-
-    // Work Experience section
-    doc.setFontSize(12);
-    doc.text("Work Experience", 14, 32);
-    doc.autoTable({
-      startY: 38,
-      head: [['Role', 'Company', 'Years']],
-      body: [
-        ['Client Advocate', 'ABC Corp', '15 years']
-      ]
-    });
-
-    // Education section
-    doc.text("Education", 14, doc.autoTable.previous.finalY + 10);
-    doc.text("BA in Communication", 14, doc.autoTable.previous.finalY + 20);
-
-    // Skills section
-    doc.text("Skills", 14, doc.autoTable.previous.finalY + 30);
-    doc.autoTable({
-      startY: doc.autoTable.previous.finalY + 35,
-      head: [['Skill', 'Proficiency']],
-      body: [
-        ['Client Advocacy', '★★★★★'],
-        ['Communication', '★★★★★'],
-        ['Leadership', '★★★★☆']
-      ]
-    });
-   const logo="logo.png";
-    const imgWidth = 50; // Largeur de l'image
-    const imgHeight = 50; 
-    // Save the generated PDF
-    doc.addImage(logo, 'PNG', 14, doc.internal.pageSize.height - imgHeight - 20, imgWidth, imgHeight); // Ajustez les coordonnées selon vos besoins
-
-    doc.save("DanielS_CV.pdf");
-  };
+ 
 
   return (
     <div className="p-6 bg-white shadow rounded-lg">
       <h3 className="text-2xl font-semibold text-gray-800 mb-4">CV/Resume</h3>
-      <p><strong>Work Experience:</strong> 15 years as Client Advocate</p>
-      <p><strong>Education:</strong> BA in Communication</p>
-      <p><strong>Skills:</strong> Client Advocacy, Communication, Leadership</p>
 
-      {/* Button to generate and download CV */}
-      <button
-        className="mt-6 bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-md shadow-md"
-        onClick={generatePDF}
+
+      {/* Button to view CV preview */}
+      <a href='/cv-preview'
+        className="mt-6 bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-md shadow-md"
+        
       >
-        Download CV
-      </button>
-    </div>
+        View CV
+      </a>
+
+      
+        </div>
   );
 };
+
 
 // Portfolio Section
 const PortfolioSection = () => (
@@ -179,40 +227,90 @@ const PortfolioSection = () => (
 // Settings Section
 const SettingsSection = () => (
   <div className="p-6 bg-white shadow rounded-lg">
-    <h3 className="text-2xl font-semibold text-gray-800 mb-4">Update Profile</h3>
+    <h3 className="text-2xl font-semibold text-gray-800 mb-4">Mettre à jour le profil</h3>
     <form className="space-y-6">
       <div>
-        <label className="block text-sm font-medium text-gray-700">Name</label>
+        <label className="block text-sm font-medium text-gray-700">Nom</label>
         <input
           type="text"
           className="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-          placeholder="Enter your name"
+          placeholder="Entrez votre nom"
         />
       </div>
       <div>
-        <label className="block text-sm font-medium text-gray-700">City</label>
+        <label className="block text-sm font-medium text-gray-700">Ville</label>
         <input
           type="text"
           className="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-          placeholder="Enter your city"
+          placeholder="Entrez votre ville"
         />
       </div>
       <div>
-        <label className="block text-sm font-medium text-gray-700">Skills</label>
+        <label className="block text-sm font-medium text-gray-700">Email</label>
+        <input
+          type="email"
+          className="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+          placeholder="Entrez votre email"
+        />
+      </div>
+      <div>
+        <label className="block text-sm font-medium text-gray-700">Téléphone</label>
         <input
           type="text"
           className="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-          placeholder="Enter your skills"
+          placeholder="Entrez votre numéro de téléphone"
+        />
+      </div>
+      <div>
+        <label className="block text-sm font-medium text-gray-700">Compétences</label>
+        <input
+          type="text"
+          className="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+          placeholder="Entrez vos compétences"
+        />
+      </div>
+      <div>
+        <label className="block text-sm font-medium text-gray-700">Langues</label>
+        <input
+          type="text"
+          className="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+          placeholder="Entrez vos langues parlées"
+        />
+      </div>
+      <div>
+        <label className="block text-sm font-medium text-gray-700">Année de Formation</label>
+        <input
+          type="text"
+          className="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+          placeholder="Entrez l'année de votre formation"
+        />
+      </div>
+      <div>
+        <label className="block text-sm font-medium text-gray-700">Formation Obtenue</label>
+        <input
+          type="text"
+          className="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+          placeholder="Entrez la formation obtenue"
+        />
+      </div>
+      <div>
+        <label className="block text-sm font-medium text-gray-700">Certificats</label>
+        <input
+          type="text"
+          className="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+          placeholder="Entrez vos certificats"
         />
       </div>
       <button
         className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-md shadow-md"
         type="submit"
       >
-        Save
+        Enregistrer
       </button>
     </form>
   </div>
 );
+
+
 
 export default ProfilePage;

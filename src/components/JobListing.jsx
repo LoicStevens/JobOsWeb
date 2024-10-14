@@ -16,9 +16,9 @@ const JobList = () => {
       <div className="container mx-auto">
            <div className="flex justify-between items-center mb-8">
           <h2 className="text-2xl font-bold">Job Listing</h2>
-          <button className="border-2 border-bgcustom-green text-bgcustom-green px-4 py-2 rounded hover:bg-bgcustom-green hover:text-white">
+          <a href="/announcement" className="border-2 border-bgcustom-green text-bgcustom-green px-4 py-2 rounded hover:bg-bgcustom-green hover:text-white">
             Browse More Job
-          </button>
+          </a>
         </div>
         
         {/* Liste des jobs */}
@@ -42,9 +42,9 @@ const JobList = () => {
               
               {/* Section droite : Appliquer maintenant + Délai */}
               <div className="text-right">
-                <button className="bg-bgcustom-green text-white px-4 py-2 rounded-lg shadow border hover:border-bgcustom-green hover:bg-white hover:text-bgcustom-green">
+                <a href="/detail" className="bg-bgcustom-green text-white px-4 py-2 rounded-lg shadow border hover:border-bgcustom-green hover:bg-white hover:text-bgcustom-green">
                   Apply Now
-                </button>
+                </a>
                 <p className="text-gray-400 text-sm mt-2">Date line: {job.deadline}</p>
               </div>
             </div>

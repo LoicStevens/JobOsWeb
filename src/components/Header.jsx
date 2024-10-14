@@ -61,7 +61,7 @@ const Header = () => {
                 </a>
               </li>
               <li className="group max-lg:border-b max-lg:py-3 relative">
-                <a href="#" className="hover:text-custom-green text-gray-600 font-bold text-[15px] lg:hover:fill-custom-green block">
+                <a href="/blog" className="hover:text-custom-green text-gray-600 font-bold text-[15px] lg:hover:fill-custom-green block">
                   Blog
                 </a>
               </li>
