@@ -17,12 +17,10 @@ const Announcement = () => {
                 <div className="flex flex-col lg:flex-row gap-8">
                     
                     {/* JobList à gauche (75% de largeur sur grand écran) */}
-                    <div className="lg:w-1/4 w-full">
-                    <FilterComponent/>
-                    </div>
+                   
 
                     {/* FilterComponent à droite (25% de largeur sur grand écran) */}
-                    <div className="lg:w-3/4 w-full">
+                    <div className="lg:w- w-full">
                         <JobList/>
                     </div>
                 </div>

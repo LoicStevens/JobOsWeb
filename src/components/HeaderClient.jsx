@@ -51,22 +51,22 @@ const HeaderClient = () => {
               </li>
               {/* Menu Items */}
               <li className="max-lg:border-b max-lg:py-3">
-                <a href="#" className="hover:text-custom-green text-[16px] text-custom-green block font-bold">
+                <a href="/home-client" className="hover:text-custom-green text-[16px] text-custom-green block font-bold">
                   Home
                 </a>
               </li>
               <li className="group max-lg:border-b max-lg:py-3 relative">
-                <a href="#" className="hover:text-custom-green text-gray-600 font-bold text-[16px] lg:hover:fill-custom-green block">
+                <a href="/proposals" className="hover:text-custom-green text-gray-600 font-bold text-[16px] lg:hover:fill-custom-green block">
                   Proposals
                 </a>
               </li>
               <li className="group max-lg:border-b max-lg:py-3 relative">
-                <a href="#" className="hover:text-custom-green text-gray-600 font-bold text-[16px] lg:hover:fill-custom-green block">
+                <a href="/blog" className="hover:text-custom-green text-gray-600 font-bold text-[16px] lg:hover:fill-custom-green block">
                  Blog
                 </a>
               </li>
               <li className="group max-lg:border-b max-lg:py-3 relative">
-                <a href="#" className="hover:text-custom-green text-gray-600 font-bold text-[16px] lg:hover:fill-custom-green block">
+                <a href="/chat" className="hover:text-custom-green text-gray-600 font-bold text-[16px] lg:hover:fill-custom-green block">
                   Messages
                 </a>
               </li>
@@ -104,7 +104,7 @@ const HeaderClient = () => {
                   </p>
                   <hr className="border-t border-gray-200" />
                   <a
-                    href="#"
+                    href="/profileClient"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                   >
                     Dashboard

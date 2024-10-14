@@ -16,6 +16,8 @@ import ChatInterface from './pages/ChatInterface';
 import Announcement from './pages/Announcement';
 import JobDetail from './pages/JobDetail';
 import Blog from './components/Blog';
+import ProfileClient from './pages/ProfileClient';
+import ProposalsList from './pages/ProposalsList';
 
 const App = () => {
   return (
@@ -26,6 +28,8 @@ const App = () => {
         <Route path="/chat" element={<ChatInterface />} />
         <Route path="/profil-completion" element={<ProfileComplete />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/profileClient" element={<ProfileClient />} />
+        <Route path="/proposals" element={<ProposalsList />} />
         
         {/* Route pour la page d'inscription */}
         
