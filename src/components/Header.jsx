@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { FaUserCircle } from 'react-icons/fa'; // Import de l'icône profil
+import { FaUser, FaMapMarkerAlt, FaTachometerAlt, FaHeadset, FaSignOutAlt } from 'react-icons/fa'; // Importation des icônes
+
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -61,7 +63,7 @@ const Header = () => {
                 </a>
               </li>
               <li className="group max-lg:border-b max-lg:py-3 relative">
-                <a href="#" className="hover:text-custom-green text-gray-600 font-bold text-[15px] lg:hover:fill-custom-green block">
+                <a href="/blog" className="hover:text-custom-green text-gray-600 font-bold text-[15px] lg:hover:fill-custom-green block">
                   Blog
                 </a>
               </li>
@@ -93,36 +95,35 @@ const Header = () => {
 
               {/* Dropdown Menu */}
               {isDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-10">
-                  <div className="px-4 py-2 text-sm text-gray-700">John Doe</div>
-             
-                  <p
-                    href="#settings"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    Dschang
-                  </p>
-                  <hr className="border-t border-gray-200" />
-                  <a
-                    href="/profile"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    Dashboard
-                  </a>
-                  <a
-                    href="#settings"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    Support
-                  </a>
-                  <a
-                    href="/login"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    Log Out
-                  </a>
-                </div>
-              )}
+  <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-10">
+    {/* Nom de l'utilisateur */}
+    <div className="px-4 py-2 text-sm text-gray-700 flex items-center">
+      <FaUser className="mr-2" /> Mefire Hamed
+    </div>
+
+    {/* Localisation */}
+    <p className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
+      <FaMapMarkerAlt className="mr-2" /> Dschang
+    </p>
+
+    <hr className="border-t border-gray-200" />
+
+    {/* Dashboard */}
+    <a href="/profileClient" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
+      <FaTachometerAlt className="mr-2" /> Dashboard
+    </a>
+
+    {/* Support */}
+    <a href="#settings" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
+      <FaHeadset className="mr-2" /> Support
+    </a>
+
+    {/* Déconnexion */}
+    <a href="/login" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center">
+      <FaSignOutAlt className="mr-2" /> Log Out
+    </a>
+  </div>
+)}
             </div>
           </div>
 

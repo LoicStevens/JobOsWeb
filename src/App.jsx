@@ -18,6 +18,7 @@ import JobDetail from './pages/JobDetail';
 import Blog from './components/Blog';
 import ProfileClient from './pages/ProfileClient';
 import ProposalsList from './pages/ProposalsList';
+import CVPreview from './pages/CVPreview';
 
 const App = () => {
   return (
@@ -42,6 +43,7 @@ const App = () => {
         <Route path="/announcement" element={<Announcement />} />
         <Route path='/detail' element={<JobDetail />} />
         <Route path='/blog' element={<Blog />} />
+        <Route path="/cv-preview" element={<CVPreview />} />
         {/* Tu peux ajouter d'autres routes ici */}
         
       </Routes>
