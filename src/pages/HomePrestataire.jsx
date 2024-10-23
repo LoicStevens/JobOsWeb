@@ -41,12 +41,12 @@ const HomePrestataire = () => {
 
           {/* Section image */}
           <div 
-            className={`lg:w-1/2 transform transition-transform duration-1000 ease-out ${
+            className={`hidden lg:block lg:w-1/2 transform transition-transform duration-1000 ease-out ${
               isVisible ? 'translate-x-0' : 'translate-x-full'
             }`}
           >
             <img 
-              src="/prestataire.png"  
+              src="/prestataire3.png"  
               alt="Job Listings" 
               className="w-full h-auto object-cover"
             />

@@ -43,7 +43,7 @@ const JobList = () => {
               {/* Section droite : Appliquer maintenant + Délai */}
               <div className="text-right">
                 <a href="/detail" className="bg-bgcustom-green text-white px-4 py-2 rounded-lg shadow border hover:border-bgcustom-green hover:bg-white hover:text-bgcustom-green">
-                  Apply Now
+                  View 
                 </a>
                 <p className="text-gray-400 text-sm mt-2">Date line: {job.deadline}</p>
               </div>

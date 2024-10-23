@@ -56,15 +56,7 @@ const ProfilePage = () => {
           </div>
         </div>
 
-        {/* Action Buttons */}
-        <div className="flex justify-end mt-5">
-          <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-md mr-3 shadow-md">
-            Edit profile
-          </button>
-          <button className="bg-yellow-400 hover:bg-yellow-500 text-white px-5 py-2 rounded-md shadow-md">
-            View stats
-          </button>
-        </div>
+        
 
         {/* Tab navigation with icons */}
         <div className="flex mt-5 border-b-2 border-gray-200">

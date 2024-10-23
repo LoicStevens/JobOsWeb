@@ -1,5 +1,5 @@
 
-import React from 'react';
+
 import HeaderClient from '../components/HeaderClient';
 import Footer from '../components/Footer';
 

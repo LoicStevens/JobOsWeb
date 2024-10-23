@@ -34,17 +34,28 @@ const CVPreview = () => {
         heightLeft -= pageHeight;
       }
   
-      // Ajoutez le logo en bas à droite
-      const logoWidth = 30; // Ajustez la largeur du logo
-      const logoHeight = 10; // Ajustez la hauteur du logo
-      pdf.addImage(logo, 'PNG', pdf.internal.pageSize.width - logoWidth - 10, pdf.internal.pageSize.height - logoHeight - 10, logoWidth, logoHeight);
+      // Position pour le logo
+      const logoWidth = 30;
+      const logoHeight = 10;
+      const lastPage = pdf.internal.getNumberOfPages();
+      pdf.setPage(lastPage);
       
+      // Calculer la position du logo
+      const logoX = pdf.internal.pageSize.width - logoWidth - 10;
+      const logoY = imgHeight - 10; // Ajustez cette valeur selon l'espacement souhaité
+  
+      // Ajoutez le logo à la fin du CV
+      pdf.addImage(logo, 'PNG', logoX, logoY, logoWidth, logoHeight);
+  
       pdf.save('CV_Florian_Sapin.pdf');
     });
   };
-
+  
+  
   return (
+    
     <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg my-10 p-6" style={{ fontFamily }}>
+       
       {/* Sélecteurs de personnalisation */}
       <div className="flex justify-between mb-6">
         <div>
@@ -85,6 +96,12 @@ const CVPreview = () => {
             onChange={(e) => setTextColor(e.target.value)}
           />
         </div>
+        <button
+        onClick={downloadCV}
+        className="mt-6 bg-bgcustom-green text-white py-2 px-4 rounded"
+      >
+        Download CV
+      </button>
       </div>
 
       {/* CV à capturer */}
@@ -95,7 +112,7 @@ const CVPreview = () => {
         >
           <div className="mb-6">
             <img
-              src="https://via.placeholder.com/150"
+              src="/public/prestataire.png"
               alt="Profile"
               className="rounded-full w-32 h-32 mx-auto"
             />
@@ -199,12 +216,7 @@ const CVPreview = () => {
         </div>
       </div>
 
-      <button
-        onClick={downloadCV}
-        className="mt-6 bg-blue-500 text-white py-2 px-4 rounded"
-      >
-        Télécharger le CV
-      </button>
+     
     </div>
   );
 };
