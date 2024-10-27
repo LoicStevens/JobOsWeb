@@ -8,103 +8,128 @@ const CVPreview = () => {
   const [fontFamily, setFontFamily] = useState('sans-serif');
   const [titleColor, setTitleColor] = useState('#f97316');
   const [textColor, setTextColor] = useState('#4b5563');
-  
-  const cvRef = useRef(); // Référence à l'élément CV
+  const [bulletStyle, setBulletStyle] = useState('•'); // Style de puce par défaut
+  const cvRef = useRef();
 
   const downloadCV = () => {
-    html2canvas(cvRef.current).then((canvas) => {
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF();
+    html2canvas(cvRef.current, { scale: 2 }).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png', 1.0);
+      const pdf = new jsPDF({
+        unit: 'mm',
+        format: 'a4',
+        orientation: 'portrait',
+      });
+  
       const imgWidth = 190;
       const pageHeight = pdf.internal.pageSize.height;
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
-      let heightLeft = imgHeight;
   
-      let position = 0;
+      // Définir les marges
+      const topMargin = 20;
+      const bottomMargin = 10;
+      const pageContentHeight = pageHeight - topMargin - bottomMargin;
   
-      // Ajoutez l'image du CV
-      pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
-      heightLeft -= pageHeight;
-  
-      // Ajoutez des pages supplémentaires si nécessaire
-      while (heightLeft >= 0) {
-        position = heightLeft - imgHeight;
-        pdf.addPage();
-        pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
-        heightLeft -= pageHeight;
+      // Ajuster la hauteur de l'image
+      let scaledImgHeight = imgHeight;
+      if (imgHeight > pageContentHeight) {
+        const scaleFactor = pageContentHeight / imgHeight;
+        scaledImgHeight = imgHeight * scaleFactor;
       }
   
-      // Position pour le logo
+      // Positionner l'image
+      pdf.addImage(imgData, 'PNG', 10, topMargin, imgWidth, scaledImgHeight);
+  
+      // Calculer la position du logo
       const logoWidth = 30;
       const logoHeight = 10;
-      const lastPage = pdf.internal.getNumberOfPages();
-      pdf.setPage(lastPage);
+      const logoY = topMargin + scaledImgHeight + 5; // Ajuste l'espacement si nécessaire
+  
+      // Vérifier si le logo ne déborde pas en bas de page
+      if (logoY + logoHeight > pageHeight - bottomMargin) {
+        pdf.addPage(); // Ajouter une nouvelle page si nécessaire
+      }
+  
+      // Ajouter le logo
+      pdf.addImage(logo, 'PNG', pdf.internal.pageSize.width - logoWidth - 10, logoY, logoWidth, logoHeight);
       
-      // Calculer la position du logo
-      const logoX = pdf.internal.pageSize.width - logoWidth - 10;
-      const logoY = imgHeight - 10; // Ajustez cette valeur selon l'espacement souhaité
-  
-      // Ajoutez le logo à la fin du CV
-      pdf.addImage(logo, 'PNG', logoX, logoY, logoWidth, logoHeight);
-  
+      // Sauvegarder le PDF
       pdf.save('CV_Florian_Sapin.pdf');
     });
   };
   
   
-  return (
-    
-    <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg my-10 p-6" style={{ fontFamily }}>
-       
-      {/* Sélecteurs de personnalisation */}
-      <div className="flex justify-between mb-6">
-        <div>
-          <label className="block text-sm font-bold mb-1">Couleur de la section gauche:</label>
-          <input
-            type="color"
-            value={leftSectionBgColor}
-            onChange={(e) => setLeftSectionBgColor(e.target.value)}
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-bold mb-1">Police globale:</label>
-          <select
-            value={fontFamily}
-            onChange={(e) => setFontFamily(e.target.value)}
-            className="border border-gray-300 rounded px-2 py-1"
-          >
-            <option value="sans-serif">Sans-serif</option>
-            <option value="serif">Serif</option>
-            <option value="monospace">Monospace</option>
-            <option value="Arial">Arial</option>
-            <option value="Georgia">Georgia</option>
-          </select>
-        </div>
-        <div>
-          <label className="block text-sm font-bold mb-1">Couleur des titres:</label>
-          <input
-            type="color"
-            value={titleColor}
-            onChange={(e) => setTitleColor(e.target.value)}
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-bold mb-1">Couleur du texte:</label>
-          <input
-            type="color"
-            value={textColor}
-            onChange={(e) => setTextColor(e.target.value)}
-          />
-        </div>
-        <button
-        onClick={downloadCV}
-        className="mt-6 bg-bgcustom-green text-white py-2 px-4 rounded"
-      >
-        Download CV
-      </button>
-      </div>
+  
+  
+  
+  
+  
 
-      {/* CV à capturer */}
+  return (
+    <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg my-10 p-6" style={{ fontFamily }}>
+     <div className="flex flex-wrap justify-between mb-6">
+  <div className="flex items-center">
+    <label className="block text-sm font-bold mr-2">Couleur section gauche:</label>
+    <input
+      type="color"
+      value={leftSectionBgColor}
+      onChange={(e) => setLeftSectionBgColor(e.target.value)}
+    />
+  </div>
+
+  <div className="flex items-center">
+    <label className="block text-sm font-bold mr-2">Police globale:</label>
+    <select
+      value={fontFamily}
+      onChange={(e) => setFontFamily(e.target.value)}
+      className="border border-gray-300 rounded px-2 py-1"
+    >
+      {['sans-serif', 'serif', 'monospace', 'Arial', 'Georgia', 'Courier New', 'Tahoma', 'Verdana', 'Comic Sans MS', 'Impact'].map(font => (
+        <option key={font} value={font}>{font}</option>
+      ))}
+    </select>
+  </div>
+
+  <div className="flex items-center">
+    <label className="block text-sm font-bold mr-2">Couleur des titres:</label>
+    <input
+      type="color"
+      value={titleColor}
+      onChange={(e) => setTitleColor(e.target.value)}
+    />
+  </div>
+
+  <div className="flex items-center">
+    <label className="block text-sm font-bold mr-2">Couleur du texte:</label>
+    <input
+      type="color"
+      value={textColor}
+      onChange={(e) => setTextColor(e.target.value)}
+    />
+  </div>
+
+  <div className="flex items-center">
+    <label className="block text-sm font-bold mr-2">Style de puces:</label>
+    <select
+      value={bulletStyle}
+      onChange={(e) => setBulletStyle(e.target.value)}
+      className="border border-gray-300 rounded px-2 py-1"
+    >
+      <option value="•">Point</option>
+      <option value="→">Flèche</option>
+      <option value="■">Carré</option>
+      <option value="★">Étoile</option>
+    </select>
+  </div>
+
+  <button
+    onClick={downloadCV}
+    className="mt-6 bg-bgcustom-green text-white py-2 px-4 rounded"
+  >
+    Download CV
+  </button>
+</div>
+
+
       <div className="grid grid-cols-4 gap-6" ref={cvRef}>
         <div
           className="col-span-1 text-white p-6 rounded-lg"
@@ -112,7 +137,7 @@ const CVPreview = () => {
         >
           <div className="mb-6">
             <img
-              src="/public/prestataire.png"
+              src="/public/prestataire3.png"
               alt="Profile"
               className="rounded-full w-32 h-32 mx-auto"
             />
@@ -132,10 +157,9 @@ const CVPreview = () => {
               Compétences
             </h3>
             <ul className="text-sm space-y-1">
-              <li>• Conception des leçons</li>
-              <li>• Écoute active</li>
-              <li>• Encadrement des travaux pratiques</li>
-              <li>• Technologies de l&apos;éducation</li>
+              {['Conception des leçons', 'Écoute active', 'Encadrement des travaux pratiques', 'Technologies de l’éducation'].map(skill => (
+                <li key={skill}>{bulletStyle} {skill}</li>
+              ))}
             </ul>
           </div>
 
@@ -152,9 +176,9 @@ const CVPreview = () => {
               Centres d&apos;intérêt
             </h3>
             <ul className="text-sm space-y-1">
-              <li>• Littérature</li>
-              <li>• Cinéma</li>
-              <li>• Sports d&apos;équipe</li>
+              {['Littérature', 'Cinéma', 'Sports d’équipe'].map(interest => (
+                <li key={interest}>{bulletStyle} {interest}</li>
+              ))}
             </ul>
           </div>
         </div>
@@ -190,11 +214,12 @@ const CVPreview = () => {
                 <p className="font-semibold" style={{ color: textColor }}>Septembre 2020 - Actuel</p>
                 <p className="text-sm" style={{ color: textColor }}>École primaire Marie Curie | Chambéry</p>
                 <p className="text-sm" style={{ color: textColor }}>Professeur de mathématiques</p>
-                <ul className="text-sm list-disc ml-5" style={{ color: textColor }}>
-                  <li>Évaluer les besoins de chaque élève.</li>
-                  <li>Adapter les contenus pour maximiser l&apos;apprentissage.</li>
-                  <li>Collaborer avec les enseignants sur les projets.</li>
-                </ul>
+                <ul className="text-sm ml-5" style={{ color: textColor }}>
+                    <li>{bulletStyle} Évaluer les besoins de chaque élève.</li>
+                    <li>{bulletStyle} Adapter les contenus pour maximiser l&apos;apprentissage.</li>
+                    <li>{bulletStyle} Collaborer avec les enseignants sur les projets.</li>
+                 </ul>
+
               </div>
             </div>
           </div>
@@ -202,21 +227,19 @@ const CVPreview = () => {
           <div className="mt-6">
             <h3 className="text-xl font-bold" style={{ color: titleColor }}>Informatique</h3>
             <ul className="text-sm" style={{ color: textColor }}>
-              <li>• Microsoft Office 5/5</li>
-              <li>• Zoom 5/5</li>
+              <li>{bulletStyle} Microsoft Office 5/5</li>
+              <li>{bulletStyle} Zoom 5/5</li>
             </ul>
           </div>
 
           <div className="mt-6">
             <h3 className="text-xl font-bold" style={{ color: titleColor }}>Certificats</h3>
             <ul className="text-sm" style={{ color: textColor }}>
-              <li>• Certificat de secourisme obtenu en 2020</li>
+              <li>{bulletStyle} Certificat de secourisme obtenu en 2020</li>
             </ul>
           </div>
         </div>
       </div>
-
-     
     </div>
   );
 };

@@ -9,9 +9,9 @@ const Blog = () => {
     {
       image: "/public/home.png",
       date: "15 Jan",
-      title: "Google inks pact for new 35-storey office",
+      title: "Go inks pact for new 35-storey office",
       description: "That dominion stars lights dominion divide years for fourth have don't stars is that he earth it first without heaven in place seed it second morning saying.",
-      categories: ["Travel", "Lifestyle"],
+      categories: ["Trading", "Lifestyle"],
       likes: 25,
     },
     {
@@ -40,6 +40,8 @@ const Blog = () => {
   ];
 
   const [blogPosts, setBlogPosts] = useState(initialBlogPosts);
+  const [filteredPosts, setFilteredPosts] = useState(initialBlogPosts);
+  const [searchKeyword, setSearchKeyword] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newBlog, setNewBlog] = useState({ title: '', description: '', image: null });
 
@@ -67,6 +69,17 @@ const Blog = () => {
     }));
   };
 
+  // Fonction pour filtrer les articles par mot-clé
+  const handleSearch = () => {
+    const lowerKeyword = searchKeyword.toLowerCase();
+    const filtered = blogPosts.filter(post => 
+      post.title.toLowerCase().includes(lowerKeyword) ||
+      post.description.toLowerCase().includes(lowerKeyword) ||
+      post.categories.some(category => category.toLowerCase().includes(lowerKeyword))
+    );
+    setFilteredPosts(filtered);
+  };
+
   return (
     <div className="bg-gray-50 min-h-screen">
       <Header />
@@ -79,13 +92,13 @@ const Blog = () => {
             <div className="flex justify-start mb-6">
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="bg-bgcustom-green text-white px-4 py-2 rounded-md hover:bg-black"
+                className="bg-bgcustom-green text-white px-4 py-2 rounded-md "
               >
                 Post Blog
               </button>
             </div>
 
-            {blogPosts.map((post, index) => (
+            {filteredPosts.map((post, index) => (
               <div key={index} className="my-6 border border-gray-300 shadow-lg bg-white rounded-md overflow-hidden">
                 <img className="w-full h-64 object-cover" src={post.image} alt={post.title} />
                 <div className="p-4">
@@ -102,10 +115,9 @@ const Blog = () => {
                         <span key={idx}>{category}</span>
                       ))}
                     </div>
-                    {/* Section Like */}
                     <div 
                       className="flex items-center space-x-2 cursor-pointer"
-                      onClick={() => handleLike(index)} // Appel de la fonction de like
+                      onClick={() => handleLike(index)}
                     >
                       <AiOutlineLike className="text-gray-600" size={24} />
                       <span>{post.likes} Likes</span>
@@ -123,9 +135,11 @@ const Blog = () => {
               <input
                 type="text"
                 placeholder="Search Keyword"
+                value={searchKeyword}
+                onChange={(e) => setSearchKeyword(e.target.value)}
                 className="w-full border border-gray-300 p-3 rounded focus:outline-none"
               />
-              <button className="mt-2 bg-bgcustom-green text-white w-full py-2 rounded">SEARCH</button>
+              <button onClick={handleSearch} className="mt-2 bg-bgcustom-green text-white w-full py-2 rounded">SEARCH</button>
             </div>
 
             {/* Category Section */}
@@ -200,19 +214,19 @@ const Blog = () => {
               <div className="flex items-center border border-gray-300 rounded-md p-2">
                 <AiOutlineFileImage size={24} className="text-gray-600 mr-2" />
                 <label className="text-gray-500 cursor-pointer">
-                <input
-                  type="file"
-                  name="image"
-                  onChange={handleImageChange}
-                  className="w-full outline-none hidden"
-                  
-                />
-                <span>Upload Image</span>
-                 </label>
+                  <input
+                    type="file"
+                    name="image"
+                    onChange={handleImageChange}
+                    className="w-full outline-none hidden"
+                  />
+                  <span>Upload Image</span>
+                </label>
               </div>
 
+              {/* Aperçu de l'image sélectionnée */}
               {newBlog.image && (
-                <img src={newBlog.image} alt="preview" className="mt-4 w-full h-32 object-cover" />
+                <img src={newBlog.image} alt="Preview" className="mt-4 w-full h-32 object-cover" />
               )}
 
               {/* Bouton pour soumettre */}

@@ -12,10 +12,10 @@ const JobDetail = () => {
       <Header />
 
       {/* Contenu de la page */}
-      <div className="bg-gray-100 py-8"> {/* Contexte avec fond gris clair pour différencier */}
+      <div className="bg-gray-100 py-8 "> {/* Contexte avec fond gris clair pour différencier */}
         
         {/* Conteneur global du job detail, aligné à gauche avec marge */}
-        <div className="max-w-6xl ml-6 mr-auto p-6 bg-white rounded-lg shadow-lg">
+        <div className="max-w-6xl  mx-4 p-6 bg-white rounded-lg shadow-lg">
           
           {/* Titre et résumé du poste */}
           <div className="flex justify-between items-start">

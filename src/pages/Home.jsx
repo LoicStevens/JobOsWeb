@@ -1,5 +1,5 @@
 
-
+import  { useState, useEffect } from 'react';
 import HeaderClient from '../components/HeaderClient';
 import Footer from '../components/Footer';
 
@@ -7,7 +7,14 @@ import AffiliatePartners from '../components/AffiliatePartners';
 import Categories from '../components/Categories';
 const Home = () => {
    
-  
+    const [isVisible, setIsVisible] = useState(false);
+
+    // Activer l'animation après que le composant ait été monté
+    useEffect(() => {
+      setTimeout(() => {
+        setIsVisible(true);
+      }, 500); // Délai pour déclencher l'animation (0.5 seconde après le chargement)
+    }, []);
 
     return (
         <div className="min-h-screen flex flex-col">
@@ -20,7 +27,11 @@ const Home = () => {
             <div className="relative bg-bgcustom-green text-white py-12">
                 <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between px-6 lg:px-12">
                     {/* Text Section */}
-                    <div className="lg:w-1/2">
+                        <div 
+                        className={`lg:w-1/2 mb-8 lg:mb-0 transform transition-transform duration-1000 ease-out ${
+                        isVisible ? 'translate-x-0' : '-translate-x-full'
+                        }`}
+                    >
                         <h1 className="text-3xl lg:text-5xl text-black font-bold mb-4">
                             Find & Hire Expert Freelancers
                         </h1>
@@ -49,7 +60,11 @@ const Home = () => {
                     </div>
 
                     {/* Image Section */}
-                    <div className="lg:w-1/2 mt-10 lg:mt-0 lg:block  hidden">
+                    <div 
+            className={`hidden lg:block lg:w-1/2 transform transition-transform duration-1000 ease-out ${
+              isVisible ? 'translate-x-0' : 'translate-x-full'
+            }`}
+          >
                         <img
                             src="client.png"
                             alt="Expert Freelancer"

@@ -18,6 +18,7 @@ import JobDetail from './pages/JobDetail';
 import Blog from './components/Blog';
 import CVPreview from './pages/CVPreview';
 import HomePage from './pages/HomePage';
+import FAQ from './pages/FAQ';
 
 // Le composant AppWrapper qui contient la logique du loader
 const AppWrapper = () => {
@@ -62,6 +63,7 @@ const AppWrapper = () => {
           <Route path="/detail" element={<JobDetail />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/cv-preview" element={<CVPreview />} />
+          <Route path="/faq" element={<FAQ />} />
         </Routes>
       )}
     </>
